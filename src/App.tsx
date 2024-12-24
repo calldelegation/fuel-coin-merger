@@ -98,6 +98,7 @@ function App() {
       transactionSubmitNotification(tx.id);
       await tx.waitForResult();
       transactionSuccessNotification(tx.id);
+      refetchBalance();
     } catch (error) {
       console.error(error);
       errorNotification("Error merging coins. You may have reached the maximum number of coins that can be merged.");
