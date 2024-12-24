@@ -67,7 +67,9 @@ function App() {
       const { coins } = await wallet.getCoins();
       setCoins(coins);
     };
-    fetchCoins();
+
+    const interval = setInterval(fetchCoins, 2500);
+    return () => clearInterval(interval);
   }, [wallet, coins]);
 
   const mergeCoins = async () => {
@@ -81,7 +83,7 @@ function App() {
       });
       const balanceToMerge = coins
         .reduce((acc, coin) => acc.add(coin.amount), bn(0))
-        .sub(bn(1_000));
+        .sub(bn(10_000));
       console.log(balanceToMerge.toString());
 
       const txRequest = new ScriptTransactionRequest();
