@@ -1,4 +1,6 @@
-This is a [Vite](https://vitejs.dev/) project bootstrapped with [`create-fuels`](https://github.com/FuelLabs/fuels-ts/tree/master/packages/create-fuels).
+# Fuel Coin Merger
+
+This is a simple app that allows you to merge coins on the Fuel blockchain.
 
 ## Getting Started
 
@@ -13,12 +15,3 @@ pnpm fuels:dev
 ```bash
 pnpm dev
 ```
-
-## Deploying to Testnet
-
-To learn how to deploy your Fuel dApp to the testnet, you can follow our [Deploying to Testnet](https://docs.fuel.network/docs/fuels-ts/creating-a-fuel-dapp/deploying-a-dapp-to-testnet/) guide.
-
-## Learn More
-
-- [Fuel TS SDK docs](https://docs.fuel.network/docs/fuels-ts/)
-- [Fuel Docs Portal](https://docs.fuel.network/)
