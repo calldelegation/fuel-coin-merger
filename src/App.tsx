@@ -11,7 +11,13 @@ import { useEffect, useState } from "react";
 import Button from "./components/Button";
 import LocalFaucet from "./components/LocalFaucet";
 import { providerUrl, isLocal } from "./lib.tsx";
-import { Address, bn, Coin, DEFAULT_DECIMAL_UNITS, DEFAULT_PRECISION, ScriptTransactionRequest } from "fuels";
+import {
+  bn,
+  Coin,
+  DEFAULT_DECIMAL_UNITS,
+  DEFAULT_PRECISION,
+  ScriptTransactionRequest,
+} from "fuels";
 import { useNotification } from "./hooks/useNotification.tsx";
 
 function App() {
@@ -36,7 +42,10 @@ function App() {
 
   const { balance, refetch: refetchBalance } = useBalance({ address });
   const balanceFormatted = balance
-    ? bn(balance).format({ precision: DEFAULT_PRECISION, units: DEFAULT_DECIMAL_UNITS })
+    ? bn(balance).format({
+        precision: DEFAULT_PRECISION,
+        units: DEFAULT_DECIMAL_UNITS,
+      })
     : "";
 
   useEffect(() => {
@@ -51,7 +60,8 @@ function App() {
     if (!wallet) return;
 
     const fetchCoins = async () => {
-      const { maxInputs } = wallet.provider.getChain().consensusParameters.txParameters;
+      const { maxInputs } =
+        wallet.provider.getChain().consensusParameters.txParameters;
       setMaxInputs(maxInputs.toNumber());
 
       const { coins } = await wallet.getCoins();
@@ -64,14 +74,19 @@ function App() {
     if (!wallet || !balance) return;
     try {
       const assetId = await wallet.provider.getBaseAssetId();
-      const { maxInputs } = wallet.provider.getChain().consensusParameters.txParameters;
-      const { coins } = await wallet.getCoins(assetId, { first: maxInputs.sub(1).toNumber() });
-      const balanceToMerge = coins.reduce((acc, coin) => acc.add(coin.amount), bn(0)).sub(bn(1_000));
+      const { maxInputs } =
+        wallet.provider.getChain().consensusParameters.txParameters;
+      const { coins } = await wallet.getCoins(assetId, {
+        first: maxInputs.sub(1).toNumber(),
+      });
+      const balanceToMerge = coins
+        .reduce((acc, coin) => acc.add(coin.amount), bn(0))
+        .sub(bn(1_000));
       console.log(balanceToMerge.toString());
 
       const txRequest = new ScriptTransactionRequest();
       txRequest.addCoinOutput(wallet.address, balanceToMerge, assetId);
-      coins.forEach(coin => txRequest.addCoinInput(coin));
+      coins.forEach((coin) => txRequest.addCoinInput(coin));
       const txCost = await wallet.getTransactionCost(txRequest);
       txRequest.gasLimit = txCost.gasUsed;
       txRequest.maxFee = txCost.maxFee;
@@ -187,21 +202,39 @@ function App() {
                         <div className="bg-zinc-800/50 rounded-lg p-4 mb-4">
                           <div className="flex items-start">
                             <div className="flex-shrink-0">
-                              <svg className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              <svg
+                                className="h-6 w-6 text-green-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
                               </svg>
                             </div>
                             <div className="ml-3">
                               <p className="font-mono text-sm">
-                                The maximum number of coins that can be merged per transaction is{" "}
-                                <span className="font-semibold text-green-500">{maxInputs}</span>. This limit is
-                                dictated by the chain so you may need to merge coins multiple times.
+                                The maximum number of coins that can be merged
+                                per transaction is{" "}
+                                <span className="font-semibold text-green-500">
+                                  {maxInputs}
+                                </span>
+                                . This limit is dictated by the chain so you may
+                                need to merge coins multiple times.
                               </p>
                             </div>
                           </div>
                         </div>
                         <div className="flex justify-center">
-                          <Button color="primary" className="w-full mb-4" onClick={mergeCoins}>
+                          <Button
+                            color="primary"
+                            className="w-full mb-4"
+                            onClick={mergeCoins}
+                          >
                             Merge Coins
                           </Button>
                         </div>
