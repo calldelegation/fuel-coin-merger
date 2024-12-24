@@ -1,23 +1,23 @@
-import { launchTestNode } from 'fuels/test-utils';
+import { launchTestNode } from "fuels/test-utils";
 
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from "vitest";
 
 /**
  * Import for the script factory, so that we can use them in the test.
  *
  * Can't find these imports? Make sure you've run `fuels build` to generate these with typegen.
  */
-import { TestScript } from '../../src/sway-api';
+import { TestScript } from "../../src/sway-api";
 
 /**
  * Script Testing
- * 
+ *
  *
  * Tests for the script program type within the TS SDK. Here we will test the use of our script
  * function call.
  */
-describe('Script', () => {
-  test('Call', async () => {
+describe("Script", () => {
+  test("Call", async () => {
     // First, we'll launch a test node to use for our script transaction.
     using launched = await launchTestNode();
     // The test node will be killed automatically once the `launched` variable goes out of scope,

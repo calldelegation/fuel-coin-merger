@@ -1,23 +1,26 @@
-import { launchTestNode } from 'fuels/test-utils';
+import { launchTestNode } from "fuels/test-utils";
 
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect } from "vitest";
 
 /**
  * Import for the predicate factory and input data type, so that we can use them in the test.
  *
  * Can't find these imports? Make sure you've run `fuels build` to generate these with typegen.
  */
-import { TestPredicate, TestPredicateInputs } from '../../src/sway-api/predicates/TestPredicate';
+import {
+  TestPredicate,
+  TestPredicateInputs,
+} from "../../src/sway-api/predicates/TestPredicate";
 
 /**
  * Predicate Testing
- * 
+ *
  *
  * Tests for the predicate program type within the TS SDK. Here we will test the use of our predicate
  * in a transaction.
  */
-describe('Predicate', () => {
-  test('Transaction', async () => {
+describe("Predicate", () => {
+  test("Transaction", async () => {
     // First, we'll launch a test node to use for our predicate transaction.
     using launched = await launchTestNode();
     // The test node will be killed automatically once the `launched` variable goes out of scope,
@@ -63,7 +66,7 @@ describe('Predicate', () => {
 
     // And lastly we'll assert all the values to confirm the success of the predicate transfer.
     expect(finalReceiverBalance.toNumber()).toBe(
-      initialReceiverBalance.add(amountToReceiver).toNumber()
+      initialReceiverBalance.add(amountToReceiver).toNumber(),
     );
   });
 });

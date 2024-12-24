@@ -28,13 +28,15 @@ export default function LocalFaucet({ refetch, addressToFund }: Props) {
         process.env.VITE_GENESIS_WALLET_PRIVATE_KEY as string,
         wallet.provider,
       );
-      const tx = await genesis.transfer(
-        Address.fromB256(addressToFund || wallet.address.toB256()),
-        bn(5_000_000_000),
-      );
-      transactionSubmitNotification(tx.id);
-      await tx.waitForResult();
-      transactionSuccessNotification(tx.id);
+      for (let i = 0; i < 100; i++) {
+        const tx = await genesis.transfer(
+          Address.fromB256(addressToFund || wallet.address.toB256()),
+          bn(5_000_000_000),
+        );
+        transactionSubmitNotification(tx.id);
+        await tx.waitForResult();
+        transactionSuccessNotification(tx.id);
+      }
     } catch (error) {
       console.error(error);
       errorNotification("Error transferring funds.");
@@ -45,7 +47,6 @@ export default function LocalFaucet({ refetch, addressToFund }: Props) {
 
   return (
     <>
-      <hr className="border-zinc-700" />
       <div>
         <div className="flex items-center justify-between text-base dark:text-zinc-50">
           <p className="w-2/3 px-2 py-1 mr-3 font-mono text-xs">
