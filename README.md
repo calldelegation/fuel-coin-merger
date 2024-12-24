@@ -1,5 +1,7 @@
 # Fuel Coin Merger
 
+![Fuel Coin Merger](./merger.png)
+
 This is a simple app that allows you to merge coins on the Fuel blockchain.
 
 ## Getting Started
