@@ -98,7 +98,7 @@ function App() {
       transactionSuccessNotification(tx.id);
     } catch (error) {
       console.error(error);
-      errorNotification("Error merging coins.");
+      errorNotification("Error merging coins. You may have reached the maximum number of coins that can be merged.");
     }
   };
 
