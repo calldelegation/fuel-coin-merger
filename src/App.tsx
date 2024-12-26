@@ -63,8 +63,9 @@ function App() {
       const { maxInputs } =
         wallet.provider.getChain().consensusParameters.txParameters;
       setMaxInputs(maxInputs.toNumber());
+      const assetId = await wallet.provider.getBaseAssetId();
 
-      const { coins } = await wallet.getCoins();
+      const { coins } = await wallet.getCoins(assetId);
       setCoins(coins);
     };
 
