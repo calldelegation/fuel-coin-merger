@@ -39,7 +39,6 @@ function App() {
   const isConnectedToCorrectNetwork = network?.url === providerUrl;
   const address = wallet?.address.toB256() || "";
   const addressFormatted = address.slice(0, 6) + "..." + address.slice(-4);
-
   const { balance, refetch: refetchBalance } = useBalance({ address });
   const balanceFormatted = balance
     ? bn(balance).format({
@@ -238,6 +237,7 @@ function App() {
                             color="primary"
                             className="w-full mb-4"
                             onClick={mergeCoins}
+                            disabled={!numberOfCoins}
                           >
                             Merge Coins
                           </Button>
