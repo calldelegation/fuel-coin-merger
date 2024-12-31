@@ -101,7 +101,9 @@ function App() {
       refetchBalance();
     } catch (error) {
       console.error(error);
-      errorNotification("Error merging coins. You may have reached the maximum number of coins that can be merged.");
+      errorNotification(
+        "Error merging coins. You may have reached the maximum number of coins that can be merged.",
+      );
     }
   };
 
@@ -142,7 +144,7 @@ function App() {
                   </a>
                   .
                 </p>
-                <p className="pb-6 font-mono">
+                <p className="pb-4 font-mono">
                   This app helps mitigate the above errors by merging coins for
                   a single asset, more information on that can be found{" "}
                   <a
@@ -155,6 +157,14 @@ function App() {
                   </a>
                   .
                 </p>
+                <a
+                  href="https://github.com/danielbate/fuel-coin-merger"
+                  target="_blank"
+                  className="inline-block text-green-500/80 transition-colors hover:text-green-500 w-full font-mono"
+                  rel="noreferrer"
+                >
+                  Source
+                </a>
               </div>
               <div className="col-span-4">
                 <div className="gradient-border h-full rounded-xl bg-gradient-to-b from-zinc-900 to-zinc-950/80">

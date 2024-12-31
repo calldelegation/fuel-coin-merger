@@ -1,4 +1,8 @@
-export const environments = { LOCAL: "local", TESTNET: "testnet", MAINNET: "mainnet" };
+export const environments = {
+  LOCAL: "local",
+  TESTNET: "testnet",
+  MAINNET: "mainnet",
+};
 export const environment =
   process.env.VITE_DAPP_ENVIRONMENT || environments.LOCAL;
 export const isLocal = environment === environments.LOCAL;
