@@ -68,7 +68,7 @@ function App() {
       setCoins(coins);
     };
 
-    const interval = setInterval(fetchCoins, 2500);
+    const interval = setInterval(fetchCoins, 1000);
     return () => clearInterval(interval);
   }, [wallet, coins]);
 
