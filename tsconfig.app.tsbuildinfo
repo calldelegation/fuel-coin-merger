@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/lib.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/button.tsx","./src/components/localfaucet.tsx","./src/hooks/usenotification.tsx","./test/integration/contract.test.ts","./test/integration/predicate.test.ts","./test/integration/script.test.ts","./test/ui/ui.test.ts"],"errors":true,"version":"5.6.3"}
+{"root":["./src/app.tsx","./src/lib.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/button.tsx","./src/components/localfaucet.tsx","./src/hooks/usenotification.tsx","./test/ui/ui.test.ts"],"version":"5.6.3"}

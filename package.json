@@ -6,7 +6,8 @@
   "scripts": {
     "prebuild": "fuels build",
     "dev": "vite",
-    "build": "pnpm prebuild && tsc -b && vite build",
+    "build": "tsc -b && vite build",
+    "build:contracts": "fuels build && tsc -b && vite build",
     "lint": "eslint . && prettier --write .",
     "fuels:dev": "fuels dev",
     "test:ui": "./test/ui/test-ui.sh"
