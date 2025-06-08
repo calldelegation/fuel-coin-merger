@@ -60,7 +60,7 @@ function App() {
 
     const fetchCoins = async () => {
       const { maxInputs } =
-        wallet.provider.getChain().consensusParameters.txParameters;
+        (await wallet.provider.getChain()).consensusParameters.txParameters;
       setMaxInputs(maxInputs.toNumber());
       const assetId = await wallet.provider.getBaseAssetId();
 
@@ -77,7 +77,7 @@ function App() {
     try {
       const assetId = await wallet.provider.getBaseAssetId();
       const { maxInputs } =
-        wallet.provider.getChain().consensusParameters.txParameters;
+        (await wallet.provider.getChain()).consensusParameters.txParameters;
       const { coins } = await wallet.getCoins(assetId, {
         first: maxInputs.sub(1).toNumber(),
       });
