@@ -1,0 +1,13 @@
+version: "2"
+authtoken: YOUR_NGROK_TOKEN_HERE
+tunnels:
+  fuel-app:
+    addr: 5173
+    proto: http
+    subdomain: fuel-coin-merger  # Requires paid plan
+    bind_tls: true
+  fuel-node:
+    addr: 4000
+    proto: http
+    subdomain: fuel-node  # Requires paid plan
+    bind_tls: true 

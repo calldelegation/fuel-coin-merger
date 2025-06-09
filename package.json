@@ -4,12 +4,15 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "prebuild": "fuels build",
+    "build:sway": "fuels build",
     "dev": "vite",
+    "dev:tunnel": "concurrently \"vite\" \"ngrok http 5173\"",
+    "tunnel": "ngrok http 5173",
     "build": "tsc -b && vite build",
     "build:contracts": "fuels build && tsc -b && vite build",
     "lint": "eslint . && prettier --write .",
     "fuels:dev": "fuels dev",
+    "fuels:tunnel": "concurrently \"fuels dev\" \"ngrok http 4000\"",
     "test:ui": "./test/ui/test-ui.sh"
   },
   "dependencies": {
@@ -33,6 +36,7 @@
     "@types/react-dom": "^18.3",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.13",
